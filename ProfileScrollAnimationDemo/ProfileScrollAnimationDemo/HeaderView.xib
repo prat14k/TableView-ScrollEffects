@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="17C205" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="aT1-yN-zvm" customClass="TableHeader" customModule="ProfileScrollAnimationDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myAvatar1" translatesAutoresizingMaskIntoConstraints="NO" id="dIX-sk-qcg">
+                    <rect key="frame" x="134" y="16" width="140" height="140"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="dIX-sk-qcg" secondAttribute="height" multiplier="1:1" id="uWl-Sk-nFZ"/>
+                        <constraint firstAttribute="height" constant="140" id="yZW-t9-Zb8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prateek Sharma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOG-zL-h4s" userLabel="MainLabel">
+                    <rect key="frame" x="141" y="166" width="127" height="23"/>
+                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️  iOS  ❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujW-ZX-GI7" userLabel="SubLabel">
+                    <rect key="frame" x="160" y="196" width="88" height="19"/>
+                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ujW-ZX-GI7" firstAttribute="centerX" secondItem="dIX-sk-qcg" secondAttribute="centerX" id="AfZ-7Y-kII"/>
+                <constraint firstItem="dIX-sk-qcg" firstAttribute="centerX" secondItem="aT1-yN-zvm" secondAttribute="centerX" id="FVZ-mc-h0b"/>
+                <constraint firstItem="fOG-zL-h4s" firstAttribute="centerX" secondItem="dIX-sk-qcg" secondAttribute="centerX" id="K1B-VT-sw2"/>
+                <constraint firstItem="fOG-zL-h4s" firstAttribute="top" secondItem="dIX-sk-qcg" secondAttribute="bottom" constant="10" id="b0T-6j-Ecr"/>
+                <constraint firstItem="ujW-ZX-GI7" firstAttribute="top" secondItem="fOG-zL-h4s" secondAttribute="bottom" constant="7" id="vfM-Ux-o01"/>
+                <constraint firstItem="dIX-sk-qcg" firstAttribute="top" secondItem="aT1-yN-zvm" secondAttribute="top" constant="16" id="vgR-jS-nU8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="name" destination="fOG-zL-h4s" id="VnH-LU-apy"/>
+                <outlet property="userImage" destination="dIX-sk-qcg" id="HBL-jz-GVL"/>
+                <outlet property="userImageHghtContraint" destination="yZW-t9-Zb8" id="ELh-KI-fmL"/>
+                <outlet property="userName" destination="ujW-ZX-GI7" id="ITb-UP-oUm"/>
+            </connections>
+            <point key="canvasLocation" x="-34" y="687.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="myAvatar1" width="200" height="200"/>
+    </resources>
+</document>
