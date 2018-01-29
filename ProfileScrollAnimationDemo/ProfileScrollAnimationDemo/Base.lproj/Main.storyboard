@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,18 +23,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LJD-VO-PZr">
-                                <rect key="frame" x="-1" y="20" width="376" height="647"/>
+                                <rect key="frame" x="-0.5" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Xyi-sD-GVs" style="IBUITableViewCellStyleDefault" id="kuK-Lt-U2h">
-                                        <rect key="frame" x="0.0" y="28" width="376" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kuK-Lt-U2h" id="Qsc-xY-Eay">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xyi-sD-GVs">
-                                                    <rect key="frame" x="15" y="0.0" width="346" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -63,9 +64,52 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="LJD-VO-PZr" id="2KC-LJ-QDw"/>
+                        <outlet property="tableViewHeader" destination="5nm-4a-DLI" id="viz-7X-CeK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kZ-IR-4hN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="5nm-4a-DLI" customClass="TableHeader" customModule="ProfileScrollAnimationDemo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myAvatar1" translatesAutoresizingMaskIntoConstraints="NO" id="f6q-6i-41u">
+                            <rect key="frame" x="117.5" y="16" width="140" height="140"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="140" id="SvV-Yg-eqs"/>
+                                <constraint firstAttribute="width" secondItem="f6q-6i-41u" secondAttribute="height" multiplier="1:1" id="qW4-Aq-sgO"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prateek Sharma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k73-wD-tRS" userLabel="MainLabel">
+                            <rect key="frame" x="124.5" y="166" width="127" height="23"/>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️  iOS  ❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nl1-g0-qp3" userLabel="SubLabel">
+                            <rect key="frame" x="143.5" y="196" width="88" height="19"/>
+                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.87058823529999996" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Nl1-g0-qp3" secondAttribute="bottom" constant="16" id="38f-b0-zTb"/>
+                        <constraint firstItem="f6q-6i-41u" firstAttribute="centerX" secondItem="5nm-4a-DLI" secondAttribute="centerX" id="AoQ-Bm-pS5"/>
+                        <constraint firstItem="Nl1-g0-qp3" firstAttribute="centerX" secondItem="f6q-6i-41u" secondAttribute="centerX" id="BgK-7t-L6b"/>
+                        <constraint firstItem="k73-wD-tRS" firstAttribute="centerX" secondItem="f6q-6i-41u" secondAttribute="centerX" id="WtM-rx-Hky"/>
+                        <constraint firstItem="k73-wD-tRS" firstAttribute="top" secondItem="f6q-6i-41u" secondAttribute="bottom" constant="10" id="hj0-lk-FLy"/>
+                        <constraint firstItem="Nl1-g0-qp3" firstAttribute="top" secondItem="k73-wD-tRS" secondAttribute="bottom" constant="7" id="nM1-DO-K9Z"/>
+                        <constraint firstItem="f6q-6i-41u" firstAttribute="top" secondItem="5nm-4a-DLI" secondAttribute="top" constant="16" id="qqz-bf-UhY"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="headerViewBottomContraint" destination="38f-b0-zTb" id="h1b-lR-zR6"/>
+                        <outlet property="name" destination="k73-wD-tRS" id="Z59-il-mi3"/>
+                        <outlet property="userImage" destination="f6q-6i-41u" id="uDq-eJ-vQb"/>
+                        <outlet property="userImageHghtContraint" destination="SvV-Yg-eqs" id="q8X-ln-3Ka"/>
+                        <outlet property="userName" destination="Nl1-g0-qp3" id="z4C-DH-hwz"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="911" y="793"/>
         </scene>
@@ -116,4 +160,7 @@
             <point key="canvasLocation" x="2145" y="525"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="myAvatar1" width="200" height="200"/>
+    </resources>
 </document>

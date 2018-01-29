@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableHeader: UITableViewHeaderFooterView {
+class TableHeader: UIView {
 
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -20,6 +20,12 @@ class TableHeader: UITableViewHeaderFooterView {
         }
     }
     
+    @IBOutlet weak var headerViewBottomContraint: NSLayoutConstraint! {
+        didSet {
+            headerViewBottomContraintConstant = headerViewBottomContraint.constant
+        }
+    }
     
     public var userImageHghtConstant : CGFloat!
+    public var headerViewBottomContraintConstant : CGFloat!
 }
