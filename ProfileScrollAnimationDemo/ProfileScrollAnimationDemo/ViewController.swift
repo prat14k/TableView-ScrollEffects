@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     let nameFontSize : CGFloat = 20
-    let baseUserNameFontSize : CGFloat = 8
+    let baseUserNameFontSize : CGFloat = 1
     let userNameFontSize : CGFloat = 17
     let baseNameFontSize : CGFloat = 14
     
@@ -25,7 +25,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet var tableViewHeader : TableHeader!
-//    var headerView : TableHeader!
     
     var decreaseTableHeaderHeight : CGFloat = 0
     
@@ -40,7 +39,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        let nib = UINib(nibName: "HeaderView", bundle: nil)
 //        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "header")
         
-        
         self.tableView.addSubview(tableViewHeader)
         
         headerHght = self.tableViewHeader.frame.size.height
@@ -54,13 +52,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.addConstraint(NSLayoutConstraint(item: tableViewHeader, attribute: .width, relatedBy: .equal, toItem: tableView, attribute: .width, multiplier: 1, constant: 0))
         tableView.addConstraint(NSLayoutConstraint(item: tableViewHeader, attribute: .centerX, relatedBy: .equal, toItem: tableView, attribute: .centerX, multiplier: 1, constant: 0))
         
-        
-//        tableView.addConstraint(NSLayoutConstraint(item: tableViewHeader, attribute: <#T##NSLayoutAttribute#>, relatedBy: <#T##NSLayoutRelation#>, toItem: tableView, attribute: <#T##NSLayoutAttribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>))
-//        tableView.addConstraint(NSLayoutConstraint(item: tableViewHeader, attribute: <#T##NSLayoutAttribute#>, relatedBy: <#T##NSLayoutRelation#>, toItem: tableView, attribute: <#T##NSLayoutAttribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>))
-//        tableView.addConstraint(NSLayoutConstraint(item: tableViewHeader, attribute: <#T##NSLayoutAttribute#>, relatedBy: <#T##NSLayoutRelation#>, toItem: tableView, attribute: <#T##NSLayoutAttribute#>, multiplier: <#T##CGFloat#>, constant: <#T##CGFloat#>))
-        
         self.tableView.contentInset = UIEdgeInsets(top: headerHght, left: 0, bottom: 0, right: 0)
-        
         self.tableView.contentOffset = CGPoint(x: 0, y: -headerHght)
     }
     
@@ -77,28 +69,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = "Title \(indexPath.row)"
         return cell
     }
+ 
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        
-//        if headerView == nil {
-//            if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as? TableHeader {
-//                
-//                headerView = header
-//                headerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: headerHght - decreaseTableHeaderHeight)
-//                headerView.contentView.backgroundColor = UIColor(red: 148.0/255.0, green: 188.0/255.0, blue: 252.0/255.0, alpha: 1.0)
-//
-//            }
-//        }
-//        return headerView
-//    }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return headerHght - decreaseTableHeaderHeight
-//    }
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-//        
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let bottomContraintVal = headerHght - (tableViewHeader.name.frame.origin.y + tableViewHeader.name.frame.size.height)
+        
+        tableViewHeader.headerViewBottomContraint = NSLayoutConstraint(item: tableViewHeader, attribute: .bottom, relatedBy: .equal, toItem: tableViewHeader.name, attribute: .bottom, multiplier: 1, constant: bottomContraintVal)
+        tableViewHeader.addConstraint(tableViewHeader.headerViewBottomContraint)
+        
+        tableViewHeader.removeConstraint(tableViewHeader.userNameVheaderViewBottomContraint)
+    }
     
 }
 
@@ -120,10 +102,9 @@ extension ViewController : UIScrollViewDelegate {
             binaryScaleVal = 0
             newSizeSubLblSize = baseUserNameFontSize
             newSizeMainLblSize = baseNameFontSize
-            headerViewBottomConstraintVal = -1
+            headerViewBottomConstraintVal = tableViewHeader.baseBottomContraintValue
         }
         else if offsetY <= 0 {
-//            print(offsetY)
             scaleVal = 0
             binaryScaleVal = 1
             newSizeMainLblSize = nameFontSize
@@ -136,7 +117,7 @@ extension ViewController : UIScrollViewDelegate {
             newSizeSubLblSize = baseUserNameFontSize + ((userNameFontSize - baseUserNameFontSize) * (1 - (offsetY/maxDecreaseScroll)))
             newSizeMainLblSize = baseNameFontSize + ((nameFontSize - baseNameFontSize) * (1 - (offsetY/maxDecreaseScroll)))
             
-            headerViewBottomConstraintVal = tableViewHeader.headerViewBottomContraintConstant * (1 - (offsetY/maxDecreaseScroll))
+            headerViewBottomConstraintVal = tableViewHeader.baseBottomContraintValue + ((tableViewHeader.headerViewBottomContraintConstant - tableViewHeader.baseBottomContraintValue) * (1 - (offsetY/maxDecreaseScroll)))
         }
         
         self.headerViewTopConstraint.constant = -headerHght + offsetY
@@ -167,6 +148,7 @@ extension ViewController : UIScrollViewDelegate {
         
         currentScaleVal = scaleVal
         tableViewHeader.userImageHghtContraint.constant = tableViewHeader.userImageHghtConstant - (headerImageMaxCompress * (currentScaleVal / maxDecreaseScroll))
+        
         tableViewHeader.headerViewBottomContraint.constant = headerViewBottomConstraintVal
         
         UIView.animate(withDuration: 0.07, animations: {
@@ -187,8 +169,7 @@ extension ViewController : UIScrollViewDelegate {
         //            print("Up")
         //
         //        }
-        
-
+    
     }
     
 }

@@ -85,7 +85,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️  iOS  ❤️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nl1-g0-qp3" userLabel="SubLabel">
+                        <label opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️  iOS  ❤️" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nl1-g0-qp3" userLabel="SubLabel">
                             <rect key="frame" x="143.5" y="196" width="88" height="19"/>
                             <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
                             <nil key="textColor"/>
@@ -94,7 +94,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.87058823529999996" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Nl1-g0-qp3" secondAttribute="bottom" constant="16" id="38f-b0-zTb"/>
+                        <constraint firstAttribute="bottom" secondItem="Nl1-g0-qp3" secondAttribute="bottom" priority="999" constant="16" id="38f-b0-zTb"/>
                         <constraint firstItem="f6q-6i-41u" firstAttribute="centerX" secondItem="5nm-4a-DLI" secondAttribute="centerX" id="AoQ-Bm-pS5"/>
                         <constraint firstItem="Nl1-g0-qp3" firstAttribute="centerX" secondItem="f6q-6i-41u" secondAttribute="centerX" id="BgK-7t-L6b"/>
                         <constraint firstItem="k73-wD-tRS" firstAttribute="centerX" secondItem="f6q-6i-41u" secondAttribute="centerX" id="WtM-rx-Hky"/>
@@ -103,11 +103,11 @@
                         <constraint firstItem="f6q-6i-41u" firstAttribute="top" secondItem="5nm-4a-DLI" secondAttribute="top" constant="16" id="qqz-bf-UhY"/>
                     </constraints>
                     <connections>
-                        <outlet property="headerViewBottomContraint" destination="38f-b0-zTb" id="h1b-lR-zR6"/>
                         <outlet property="name" destination="k73-wD-tRS" id="Z59-il-mi3"/>
                         <outlet property="userImage" destination="f6q-6i-41u" id="uDq-eJ-vQb"/>
                         <outlet property="userImageHghtContraint" destination="SvV-Yg-eqs" id="q8X-ln-3Ka"/>
                         <outlet property="userName" destination="Nl1-g0-qp3" id="z4C-DH-hwz"/>
+                        <outlet property="userNameVheaderViewBottomContraint" destination="38f-b0-zTb" id="kWB-Z9-TUx"/>
                     </connections>
                 </view>
             </objects>

@@ -12,7 +12,12 @@ class TableHeader: UIView {
 
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userName: UILabel! {
+        didSet {
+            userName.clipsToBounds = false
+            userName.layer.masksToBounds = false
+        }
+    }
 
     @IBOutlet weak var userImageHghtContraint: NSLayoutConstraint! {
         didSet {
@@ -20,12 +25,19 @@ class TableHeader: UIView {
         }
     }
     
-    @IBOutlet weak var headerViewBottomContraint: NSLayoutConstraint! {
+    
+    @IBOutlet weak var userNameVheaderViewBottomContraint: NSLayoutConstraint!
+    
+    var headerViewBottomContraint: NSLayoutConstraint! {
         didSet {
             headerViewBottomContraintConstant = headerViewBottomContraint.constant
         }
     }
     
     public var userImageHghtConstant : CGFloat!
-    public var headerViewBottomContraintConstant : CGFloat!
+    
+    let baseBottomContraintValue : CGFloat = 11
+    
+    public var headerViewBottomContraintConstant : CGFloat! = 0
+    
 }
